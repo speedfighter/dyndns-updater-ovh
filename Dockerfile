@@ -14,7 +14,8 @@ WORKDIR /app
 
 RUN adduser -D dyndns
 
-COPY --from=builder /app/dyndns /app/dyndns
+COPY --from=builder /app/dyndns ./
+RUN chmod +x /app/dyndns
 
 VOLUME /data
 

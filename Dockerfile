@@ -29,7 +29,4 @@ VOLUME /data
 
 USER dyndns
 
-HEALTHCHECK --interval=5m --timeout=3s \
-  CMD pgrep -f dyndns || exit 1
-
 ENTRYPOINT ["/app/dyndns"]

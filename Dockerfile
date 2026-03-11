@@ -11,7 +11,7 @@ RUN deno compile \
   --allow-read \
   --allow-write \
   --output dyndns \
-  src/index.ts
+  src/main.ts
 
 # ---------- Runtime Stage ----------
 FROM alpine:latest

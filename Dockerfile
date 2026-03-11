@@ -1,5 +1,5 @@
 # ---------- Build Stage ----------
-FROM denoland/deno:latest AS builder
+FROM --platform=$BUILDPLATFORM denoland/deno:latest AS builder
 
 WORKDIR /app
 
@@ -8,13 +8,21 @@ COPY main.ts deno.json ./
 RUN deno task build
 
 # ---------- Runtime Stage ----------
-FROM alpine:latest
+FROM debian:stable-slim AS runtime
+ARG TARGETARCH
 
 WORKDIR /app
 
-RUN adduser -D dyndns
+# Install only required packages and clean up in one layer
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/*
 
-COPY --from=builder /app/dyndns ./
+RUN useradd -r -u 1000 -g root dyndns
+
+COPY --from=builder /app/dyndns_${TARGETARCH} ./dyndns
 RUN chmod +x /app/dyndns
 
 VOLUME /data

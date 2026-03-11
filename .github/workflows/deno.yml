@@ -7,8 +7,8 @@ on:
     - cron: "25 4 15 * *"
 
 env:
-  GITHUB_NAME: ghcr.io/speedfighter/mikrotik_bot
-  DOCKER_NAME: speedfighter/mikrotik_bot
+  GITHUB_NAME: ghcr.io/speedfighter/dyndns-updater-ovh
+  DOCKER_NAME: speedfighter/dyndns-updater-ovh
 
 jobs:
   build-and-push:

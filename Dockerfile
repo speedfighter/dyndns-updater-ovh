@@ -3,28 +3,22 @@ FROM denoland/deno:latest AS builder
 
 WORKDIR /app
 
-COPY src ./src
+COPY main.ts deno.json ./
 
-RUN deno compile \
-  --allow-env \
-  --allow-net \
-  --allow-read \
-  --allow-write \
-  --output dyndns \
-  src/main.ts
+RUN deno task build
 
 # ---------- Runtime Stage ----------
 FROM alpine:latest
 
 WORKDIR /app
 
-RUN adduser -D appuser
+RUN adduser -D dyndns
 
 COPY --from=builder /app/dyndns /app/dyndns
 
 VOLUME /data
 
-USER appuser
+USER dyndns
 
 HEALTHCHECK --interval=5m --timeout=3s \
   CMD pgrep -f dyndns || exit 1

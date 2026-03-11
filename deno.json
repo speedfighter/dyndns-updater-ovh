@@ -1,10 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --allow-net --unsafely-ignore-certificate-errors --allow-env --env --watch main.ts",
-    "build_linux_arm64": "deno compile --allow-env --allow-write --allow-net --unsafely-ignore-certificate-errors=192.168.30.1 --target aarch64-unknown-linux-gnu -o mikrotik-bot_linux_arm64 main.ts",
-    "build_linux_amd64": "deno compile --allow-env --allow-write --allow-net --unsafely-ignore-certificate-errors=192.168.30.1 --target x86_64-unknown-linux-gnu -o mikrotik-bot_linux_amd64 main.ts",
-    "build_windows": "deno compile --allow-env --allow-write --allow-net --unsafely-ignore-certificate-errors=192.168.10.1 --target x86_64-pc-windows-msvc -o build/mikrotik-bot_windows.exe main.ts",
-    "build": "deno task build_linux_arm64 && deno task build_linux_amd64",
+    "dev": "deno run --allow-net --allow-env --allow-read --allow-write --env --watch main.ts",
     "lint": "deno lint",
     "format": "deno fmt --check"
   },

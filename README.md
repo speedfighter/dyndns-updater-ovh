@@ -1,8 +1,11 @@
 # OVH DynDNS Client (Deno) – Docker Compose
 
-Ein schlanker DynDNS-Client für **OVH DynHost**, geschrieben in **TypeScript** und als **native Deno-Binary** kompiliert.  
-Er überwacht deine öffentliche IP und aktualisiert automatisch deinen OVH DynHost A/AAAA Record.  
-Enthält einen **HTTP Healthcheck** und **Status Endpoint**, perfekt für Docker/Kubernetes.
+Ein schlanker DynDNS-Client für **OVH DynHost**, geschrieben in **TypeScript**
+und als **native Deno-Binary** kompiliert.\
+Er überwacht deine öffentliche IP und aktualisiert automatisch deinen OVH
+DynHost A/AAAA Record.\
+Enthält einen **HTTP Healthcheck** und **Status Endpoint**, perfekt für
+Docker/Kubernetes.
 
 ---
 
@@ -28,7 +31,7 @@ services:
       OVH_HOST: home.example.com
       OVH_USER: dyndnsuser
       OVH_PASS: password
-      INTERVAL: 300000       # optional, ms
+      INTERVAL: 300000 # optional, ms
     volumes:
       - ./data:/data
     restart: unless-stopped

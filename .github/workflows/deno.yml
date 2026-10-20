@@ -5,6 +5,7 @@ on:
     branches: ["main"]
   schedule:
     - cron: "25 4 15 * *"
+  workflow_dispatch:
 
 env:
   GITHUB_NAME: ghcr.io/speedfighter/dyndns-updater-ovh
